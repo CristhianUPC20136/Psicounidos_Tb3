@@ -17,24 +17,24 @@
 <body>
       <div th:replace= "fragments/header :: header">  </div>
       <div class="container">
-                <form th:action="@{/race/registrar}" method= "post" th:objects="${race}">
+                <form th:action="@{/paciente/registrar}" method= "post" th:objects="${paciente}">
                   <div class="form-group">
-                       <label for="idRace">ID:</label>
-                      <input type="text" class="form-control" th:fields="*{idRace}"><input>
+                       <label for="idPaciente">ID PACIENTE:</label>
+                      <input type="text" class="form-control" th:fields="*{idPaciente}"><input>
                   
                   <div class="form-group">    
                    <label for="nombre">NOMBRE:</label>
-                   <input type="text" class="form-control" th:field="*{nameRace}" id="nombre"><input>
+                   <input type="text" class="form-control" th:field="*{nombrePaciente}" id="nombre"><input>
                    
-                        <div class="alert alert-danger" th:if="${#fields.hasErrors('nameRace')}"
-                             th:errors="*{nameRace}">
+                        <div class="alert alert-danger" th:if="${#fields.hasErrors('nombrePaciente')}"
+                             th:errors="*{nombrePaciente}">
                              
                         </div>                     
                         </div>
                   </div>
                   
                   <button type="submit" class="btn btn-primary">Aceptar</button>
-                  <a href="/race/listar" class="bton btn-danger">Cancelar</a>
+                  <a href="/paciente/listar" class="bton btn-danger">Cancelar</a>
                   
                 </form>   
       </div>   
