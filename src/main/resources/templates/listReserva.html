@@ -1,28 +1,27 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-		<meta charset="UTF-8"></meta>
-		<title>LISTAR RESERVAS</title>
-		<script type="text/javascript"
 
-				src="ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.js">
+<meta charset="UTF-8"></meta>
+<title>Listar reservas</title>
 
+<script src="//code.jquery.com/jquery-1.11.1.min.js">
 		</script>
-		<link
 
-			href="maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
-
-			rel="stylesheet" id="bootstrap-css">
-
-		</link>
-		<script
-
-			src="maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
-
+<script type="text/javascript"
+	src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.js">
 		</script>
-		<script src="code.jquery.com/jquery-1.11.1.min.js">
+
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+</link>
+
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
 		</script>
-	
+
+
 </head>
 <body>
       <div th:replace= "fragments/header :: header">  </div>
@@ -30,12 +29,12 @@
                 <form id="myform">
                 <div class="row clearfix">
                     <div class="col-md-12 column">
-                         <a style="border-bottom-color: green" th:ref="@{/reserva/irRegistrar}"
+                         <a style="border-bottom-color: green" th:href="@{/reserva/irRegistrar}"
                                 id= "add_row" type="button" class="btn btn-primary btn-md left-block">
                                 <span class="glyphicon gliphicon-plus">AGREGAR</span>  
                          </a>
                          
-                         <a style="border-bottom-color: green" th:ref="@{/reserva/irBuscar}"
+                         <a style="border-bottom-color: green" th:href="@{/reserva/irBuscar}"
                                 id= "add_row" type="button" class="btn btn-primary btn-md left-block">
                                 <span class="glyphicon gliphicon-search">BUSCAR</span>  
                          </a>

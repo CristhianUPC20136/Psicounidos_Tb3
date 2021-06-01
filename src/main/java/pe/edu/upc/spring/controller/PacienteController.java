@@ -43,7 +43,7 @@ public class PacienteController {
     }
 
 	
-	@RequestMapping("/Registrar")
+	@RequestMapping("/registrar")
 	public String registrar(@ModelAttribute Paciente objPaciente, BindingResult binRes, Model model)
 	       throws ParseException
 	       {
