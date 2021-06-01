@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+		
+		<meta charset="ISO-8859-1"></meta>
+		
+		<title>RESERVA</title>
+		
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		
+		<link 	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+				rel="stylesheet" id="bootstrap-css">
+		</link>
+
+		<script
+			src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
+		</script>
+		
+		<script type="text/javascript" th:src="@{/js/reserva.js}"></script>
+
+	</head>
+	
+	<body>
+	
+		<div th:replace="fragments/header :: header"></div>
+		
+		<div class="container">
+			<form th:action="@{/reserva/registrar}" method="post" th:object="${reserva}">
+				<div class="form-group">
+					
+					<label for="idreserva">ID:</label> 
+					<input type="text" class="form-control" th:field="*{idReserva}"></input>
+					
+					<div class="form-group">
+					
+						<label 	for="nombre">DESCRIPCIÓN RESERVA:</label> 
+						<input type="text" th:field="*{descripcionReserva}" class="form-control" id="descripcion"></input>
+						
+						<label 	for="nombre">FECHA:</label> 
+						<input type="text" th:field="*{fechaReserva}" class="form-control" id="fecha"></input>
+	
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('descripcionReserva')}" 
+							th:errors="*{descripcionReserva}">
+						</div>
+						
+					</div>
+					
+				</div>
+				
+				<button type="submit" class="btn btn-primary">Aceptar</button>
+				<a href="/reserva/listar" class="btn btn-danger">Cancelar</a>
+			</form>
+		</div>
+	
+		<div th:replace="fragments/footer :: footer"></div>
+
+	</body>
+	
+</html>

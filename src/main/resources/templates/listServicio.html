@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 		<meta charset="UTF-8"></meta>
-		<title>LISTAR PACIENTES</title>
+		<title>LISTAR SERVICIOS</title>
 		<script type="text/javascript"
 
 				src="ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.js">
@@ -30,36 +30,32 @@
                 <form id="myform">
                 <div class="row clearfix">
                     <div class="col-md-12 column">
-                         <a style="border-bottom-color: green" th:ref="@{/paciente/irRegistrar}"
+                         <a style="border-bottom-color: green" th:ref="@{/servicio/irRegistrar}"
                                 id= "add_row" type="button" class="btn btn-primary btn-md left-block">
                                 <span class="glyphicon gliphicon-plus">AGREGAR</span>  
                          </a>
                          
-                         <a style="border-bottom-color: green" th:ref="@{/paciente/irBuscar}"
+                         <a style="border-bottom-color: green" th:ref="@{/servicio/irBuscar}"
                                 id= "add_row" type="button" class="btn btn-primary btn-md left-block">
                                 <span class="glyphicon gliphicon-search">BUSCAR</span>  
                          </a>
                          <table class="table table-bordered table-hover table-striped" id="tab_logic">
                             <thead>
                                    <tr>
-                                            <th class="text-center">IDPACIENTE</th>
-                                            <th class="text-center">NOMBRE</th>
-                                            <th class="text-center">APELLIDO</th>
-                                            <th class="text-center">EDAD</th>
-                                            <th class="text-center">DNI</th>
+                                            <th class="text-center">ID</th>
+                                            <th class="text-center">NOMBRE DEL SERVICIO</th>
+                                            <th class="text-center">COSTO</th>
                                             <th class="text-center">OPERACION</th>
                                             <th class="text-center">OPERACION</th>
                                    </tr>
                             </thead>
                             <tbody>
-                                 <tr th:each="pac: ${listaPacientes}">
-                                       <td th:text="${pac.idPaciente}"></td>
-                                       <td th:text="${pac.nombrePaciente}"></td>
-                                       <td th:text="${pac.apellidoPaciente}"></td>
-                                       <td th:text="${pac.edadPaciente}"></td>
-                                       <td th:text="${pac.dniPaciente}"></td>
-                                       <td><a th:href="@{/paciente/eliminar?id=}+${pac.idPaciente}">Eliminar</a></td>
-                                       <td><a th:href="@{/paciente/modificar?id=}+${pac.idPaciente}">Modificar</a></td>
+                                 <tr th:each="serv: ${listaServicios}">
+                                       <td th:text="${serv.idServicio}"></td>
+                                       <td th:text="${serv.nombreServicio}"></td>
+                                       <td th:text="${serv.costoServicio}"></td>
+                                       <td><a th:href="@{/servicio/eliminar?id=}+${serv.idServicio}">Eliminar</a></td>
+                                       <td><a th:href="@{/servicio/modificar?id=}+${serv.idServicio}">Modificar</a></td>
                                  </tr>
                             </tbody>
                          </table>

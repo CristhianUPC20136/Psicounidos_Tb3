@@ -23,7 +23,7 @@ import pe.edu.upc.spring.service.PacienteService;
 public class PacienteController {
 	
 	@Autowired
-	private PacienteService rService;
+	private PacienteService pService;
     
 	@RequestMapping("/bienvenido")
 	public String irPaginaBienvenida() {
@@ -32,7 +32,7 @@ public class PacienteController {
 
 	@RequestMapping("/")
 	public String irpaginaListadoPacientes(Map<String, Object>model) {
-        model.put("listaPacientes", rService.listar());
+        model.put("listaPacientes", pService.listar());
     	return "listPaciente";
     }
     
@@ -50,7 +50,7 @@ public class PacienteController {
 		         if (binRes.hasErrors())
 		        	 return "paciente";
 		         else {
-		        	 boolean flag = rService.insertar(objPaciente);
+		        	 boolean flag = pService.insertar(objPaciente);
 		        	 if (flag)
 		        		 return "redirect:/paciente/listar";
 		        	 else {
@@ -64,7 +64,7 @@ public class PacienteController {
 	public String modificar(@PathVariable int id, Model model, RedirectAttributes objRedir) 
 			throws ParseException 
 	{
-		Optional<Paciente> objPaciente = rService.listarId(id);
+		Optional<Paciente> objPaciente = pService.listarId(id);
 		if (objPaciente == null) {
 			objRedir.addFlashAttribute("mensaje", "Ocurrio un error");
 			return "redirect:/paciente/listar";
@@ -80,21 +80,21 @@ public class PacienteController {
          try {
         	 
         	 if (id!=null && id>0) {
-        		 rService.eliminar(id);
-        		 model.put("listaPacientes", rService.listar());
+        		 pService.eliminar(id);
+        		 model.put("listaPacientes", pService.listar());
         	 }
 			
 		} catch (Exception ex) {
 			System.out.println(ex.getMessage());
 			model.put("mensaje", "ocurrio un error");
-			model.put("listaPacientes", rService.listar());
+			model.put("listaPacientes", pService.listar());
 		}
 		return "listPaciente";
 
 	}
 	@RequestMapping("/listar")
 	public String listar(Map<String, Object> model) {
-	model.put("listaPacientes", rService.listar());
+	model.put("listaPacientes", pService.listar());
 	return "listPaciente";
 	}	
 }
