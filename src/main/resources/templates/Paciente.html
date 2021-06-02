@@ -29,8 +29,8 @@
 			<form th:action="@{/paciente/registrar}" method="post" th:object="${paciente}">
 				<div class="form-group">
 					
-					<label for="idpaciente">ID:</label> 
-					<input type="text" class="form-control" th:field="*{idPaciente}"></input>
+					
+					<input type="hidden" class="form-control" th:field="*{idPaciente}"></input>
 					
 					<div class="form-group">
 					
