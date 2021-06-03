@@ -52,9 +52,9 @@
                                  <tr th:each="serv: ${listaServicios}">
                                        <td th:text="${serv.idServicio}"></td>
                                        <td th:text="${serv.nombreServicio}"></td>
-                                       <td th:text="${serv.costoServicio}"></td>
+                                       <td th:text="${'S/.  '+serv.costoServicio}"></td>
                                        <td><a th:href="@{/servicio/eliminar?id=}+${serv.idServicio}">Eliminar</a></td>
-                                       <td><a th:href="@{/servicio/modificar?id=}+${serv.idServicio}">Modificar</a></td>
+                                       <td><a th:href="@{'/servicio/modificar/' + ${serv.idServicio}}">Modificar</a></td>
                                  </tr>
                             </tbody>
                          </table>

@@ -57,8 +57,9 @@
                                        <td th:text="${pac.apellidoPaciente}"></td>
                                        <td th:text="${pac.edadPaciente}"></td>
                                        <td th:text="${pac.dniPaciente}"></td>
-                                       <td><a th:href="@{/paciente/eliminar?id=}+${pac.idPaciente}">Eliminar</a></td>
-                                       <td><a th:href="@{/paciente/modificar?id=}+${pac.idPaciente}">Modificar</a></td>
+                                       
+                                       <td><a th:href="@{/paciente/eliminar?id=}+${pac.idPaciente}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
+                                       <td><a th:href="@{'/paciente/modificar/' + ${pac.idPaciente}}">Modificar</a></td>
                                  </tr>
                             </tbody>
                          </table>

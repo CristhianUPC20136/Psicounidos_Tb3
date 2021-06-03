@@ -38,7 +38,7 @@
 						<input type="text" th:field="*{descripcionReserva}" class="form-control" id="descripcion"></input>
 						
 						<label 	for="nombre">FECHA:</label> 
-						<input type="text" th:field="*{fechaReserva}" class="form-control" id="fecha"></input>
+						<input type="date" min="2021-06-03" max="2021-06-08" th:field="*{fechaReserva}" class="form-control" id="fecha"></input>
 	
 						<div class="alert alert-danger" th:if="${#fields.hasErrors('descripcionReserva')}" 
 							th:errors="*{descripcionReserva}">

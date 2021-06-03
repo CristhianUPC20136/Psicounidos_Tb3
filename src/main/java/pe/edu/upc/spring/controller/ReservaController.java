@@ -21,69 +21,68 @@ import pe.edu.upc.spring.service.ReservaService;
 @Controller
 @RequestMapping("/reserva")
 public class ReservaController {
-	
+
 	@Autowired
 	private ReservaService dService;
-    
+
 	@RequestMapping("/bienvenido")
 	public String irReservaBienvenida() {
 		return "bienvenido";
 	}
 
 	@RequestMapping("/")
-	public String irpaginaListadoReservas(Map<String, Object>model) {
-        model.put("listaReservas", dService.listar());
-    	return "listReserva";
-    }
-    
-	@RequestMapping("/irRegistrar")
-    public String irPaginaRegistrar(Model model) {
-    	model.addAttribute("reserva", new Reserva());
-    	return "reserva";
-    }
+	public String irpaginaListadoReservas(Map<String, Object> model) {
+		model.put("listaReservas", dService.listar());
+		return "listReserva";
+	}
 
-	
+	@RequestMapping("/irRegistrar")
+	public String irPaginaRegistrar(Model model) {
+		model.addAttribute("reserva", new Reserva());
+		return "reserva";
+	}
+
 	@RequestMapping("/registrar")
 	public String registrar(@ModelAttribute Reserva objReserva, BindingResult binRes, Model model)
-	       throws ParseException
-	       {
-		         if (binRes.hasErrors())
-		        	 return "reserva";
-		         else {
-		        	 boolean flag = dService.insertar(objReserva);
-		        	 if (flag)
-		        		 return "redirect:/reserva/listar";
-		        	 else {
-		        		 model.addAttribute("mensaje", "Ocurrio un error");
-		        		 return "redirect:/reserva/irRegistrar";
-		        	 }
-		         }
-	       }   
-	    
+			throws ParseException {
+		if (binRes.hasErrors()) {
+			System.out.println('1');
+			return "reserva";
+		} else {
+			boolean flag = dService.insertar(objReserva);
+			if (flag) {
+
+				System.out.println('2');
+				return "redirect:/reserva/listar";
+
+			} else { System.out.println('3');
+				model.addAttribute("mensaje", "Ocurrio un error");
+				return "redirect:/reserva/irRegistrar";
+			}
+		}
+	}
+
 	@RequestMapping("/modificar/{id}")
-	public String modificar(@PathVariable int id, Model model, RedirectAttributes objRedir) 
-			throws ParseException 
-	{
+	public String modificar(@PathVariable int id, Model model, RedirectAttributes objRedir) throws ParseException {
 		Optional<Reserva> objReserva = dService.listarId(id);
 		if (objReserva == null) {
 			objRedir.addFlashAttribute("mensaje", "Ocurrio un error");
 			return "redirect:/reserva/listar";
-		}
-		else {
+		} else {
 			model.addAttribute("reserva", objReserva);
 			return "reserva";
 		}
 	}
-	
+
 	@RequestMapping("/eliminar")
-	public String eliminar(Map<String, Object> model, @RequestParam(value="id") Integer id) {
-         try {
-        	 
-        	 if (id!=null && id>0) {
-        		 dService.eliminar(id);
-        		 model.put("listaReservas", dService.listar());
-        	 }
-			
+	public String eliminar(Map<String, Object> model, @RequestParam(value = "id") Integer id) {
+		try {
+
+			if (id != null && id > 0) {
+				dService.eliminar(id);
+				model.put("listaReservas", dService.listar());
+			}
+
 		} catch (Exception ex) {
 			System.out.println(ex.getMessage());
 			model.put("mensaje", "ocurrio un error");
@@ -92,13 +91,10 @@ public class ReservaController {
 		return "listReserva";
 
 	}
+
 	@RequestMapping("/listar")
 	public String listar(Map<String, Object> model) {
-	model.put("listaReservas", dService.listar());
-	return "listReserva";
-	}	
+		model.put("listaReservas", dService.listar());
+		return "listReserva";
+	}
 }
-
-	
-
-
